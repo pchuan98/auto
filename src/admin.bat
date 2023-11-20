@@ -27,3 +27,6 @@ echo Running with elevated privileges.
 :: ... 接下来的操作 ...
 
 pause
+
+
+
