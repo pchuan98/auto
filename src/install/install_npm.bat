@@ -2,7 +2,7 @@
 :: Author: chuan
 :: Date: 2023.11.14
 :: Description: download and config npm
-:: Usage: npm.bat
+:: Usage: install_npm.bat
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 @echo off
