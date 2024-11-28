@@ -21,7 +21,7 @@ RECORD_NAME="simscop.pchuan.site"
 # Cloudflare DNS record type (A or AAAA)
 RECORD_TYPE="A"
 # The new IP address you want to point to
-NEW_IP=$(ping -4 -c 1 simscop.asuscomm.cn | grep -oP '\(\K[0-9.]+(?=\))' | head -n 1)
+NEW_IP=$(ping -4 -c 1 -W 1 simscop.asuscomm.cn | grep -oP '\(\K[0-9.]+(?=\))' | head -n 1)
 
 echo "New IP address: $NEW_IP"
 
