@@ -3,7 +3,7 @@
 	<packageSources>
 		<clear />
 		<add key="nuget-cdn" value="https://nuget.cdn.azure.cn/v3/index.json" />
-		<add key="simscop" value="https://nuget.pchuan.site/v3/index.json" />
+		<!--<add key="simscop" value="https://nuget.pchuan.site/v3/index.json" />-->
 	</packageSources>
 	<disabledPackageSources>
 		<clear />

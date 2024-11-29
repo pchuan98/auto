@@ -58,6 +58,22 @@ IF NOT EXIST LICENSE (
     call "%~dp0colors.bat" 4 0 "[W] The LICENSE file already exists"
 )
 
+: append nuget.config
+IF NOT EXIST nuget.config (
+    type "%~dp0..\templates\cs\nuget" >> nuget.config
+    call "%~dp0colors.bat" 3 0 "[I] nuget.config file created"
+) ELSE (
+    call "%~dp0colors.bat" 4 0 "[W] The nuget.config file already exists"
+)
+
+: append Directory.Build.props
+IF NOT EXIST Directory.Build.props (
+    type "%~dp0..\templates\cs\directory" >> Directory.Build.props
+    call "%~dp0colors.bat" 3 0 "[I] Directory.Build.props file created"
+) ELSE (
+    call "%~dp0colors.bat" 4 0 "[W] The Directory.Build.props file already exists"
+)
+
 : valid and append
 IF NOT EXIST src ( mkdir src && call "%~dp0colors.bat" 3 0 "[I] The src folder created" ) ^
     ELSE call "%~dp0colors.bat" 4 0 "[W] The src folder already exists"
