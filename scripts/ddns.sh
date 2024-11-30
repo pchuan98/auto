@@ -74,4 +74,4 @@ update_dns_record() {
 update_dns_record
 
 # Add the following line to your crontab to run this script every 30 minutes
-# echo "*/30 * * * * /bin/bash ddns.sh" | crontab -
+# echo "*/1 * * * * /bin/bash /root/auto/scripts/ddns.sh >> /root/auto/scripts/logs 2>&1" | crontab -
