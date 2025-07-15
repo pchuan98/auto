@@ -12,42 +12,50 @@
 @echo off
 
 :: detected the npm enviroment
-call npm -v >nul 2>&1
-IF ERRORLEVEL 1 (
-    call "%~dp0colors.bat" 2 0 "[E] Npm is not installed. Please download and install it first. The download url : https://nodejs.org/en/download/"
-    exit /b 1
-)
+:: call npm -v >nul 2>&1
+:: IF ERRORLEVEL 1 (
+::     call "%~dp0colors.bat" 2 0 "[E] Npm is not installed. Please download and install it first. The download url : https://nodejs.org/en/download/"
+::     exit /b 1
+:: )
+:: 
+:: call npm ls -g --silent commitizen > nul || call "%~dp0colors.bat" 4 0 "[I] Installing commitizen ..." ^
+::     && call npm install --silent -g commitizen
+:: call npm ls -g --silent cz-conventional-changelog > nul || call "%~dp0colors.bat" 4 0 "[I] Installing cz-conventional-changelog ..." ^
+::     && call npm install --silent -g cz-conventional-changelog
+:: 
+:: : append .czrc for cz-conventional-changelog
+:: IF NOT EXIST .czrc (
+::     echo {"path": "cz-conventional-changelog"} > .czrc
+::     call "%~dp0colors.bat" 3 0 "[I] Append .czrc file"
+:: ) ELSE (
+::     call "%~dp0colors.bat" 4 0 "[W] The .czrc file already exists"
+:: )
 
-call npm ls -g --silent commitizen > nul || call "%~dp0colors.bat" 4 0 "[I] Installing commitizen ..." ^
-    && call npm install --silent -g commitizen
-call npm ls -g --silent cz-conventional-changelog > nul || call "%~dp0colors.bat" 4 0 "[I] Installing cz-conventional-changelog ..." ^
-    && call npm install --silent -g cz-conventional-changelog
+:: : append .czrc to .gitignore
+:: IF NOT EXIST .gitignore (
+::     echo .czrc> .gitignore
+::     type "%~dp0..\templates\ignore\vs" >> .gitignore
+::     call "%~dp0colors.bat" 3 0 "[I] .gitignore file created"
+:: ) ELSE (
+::     setlocal Enabledelayedexpansion
+::         set /p firstLine=<.gitignore
+::         if "!firstLine!" neq ".czrc" (
+::             call "%~dp0colors.bat" 4 0 "[W] Append .czrc to .gitignore"
+::             echo .czrc> temp
+::             type .gitignore >> temp
+::             move /y temp .gitignore > nul
+::         ) ELSE (
+::             call "%~dp0colors.bat" 4 0 "[W] The .gitignore file already exists"
+::         )
+::     endlocal
+:: )
 
-: append .czrc for cz-conventional-changelog
-IF NOT EXIST .czrc (
-    echo {"path": "cz-conventional-changelog"} > .czrc
-    call "%~dp0colors.bat" 3 0 "[I] Append .czrc file"
-) ELSE (
-    call "%~dp0colors.bat" 4 0 "[W] The .czrc file already exists"
-)
-
-: append .czrc to .gitignore
+: append .gitignore
 IF NOT EXIST .gitignore (
-    echo .czrc> .gitignore
     type "%~dp0..\templates\ignore\vs" >> .gitignore
     call "%~dp0colors.bat" 3 0 "[I] .gitignore file created"
 ) ELSE (
-    setlocal Enabledelayedexpansion
-        set /p firstLine=<.gitignore
-        if "!firstLine!" neq ".czrc" (
-            call "%~dp0colors.bat" 4 0 "[W] Append .czrc to .gitignore"
-            echo .czrc> temp
-            type .gitignore >> temp
-            move /y temp .gitignore > nul
-        ) ELSE (
-            call "%~dp0colors.bat" 4 0 "[W] The .gitignore file already exists"
-        )
-    endlocal
+    call "%~dp0colors.bat" 4 0 "[W] The .gitignore file already exists"
 )
 
 : append LICENSE
@@ -64,6 +72,14 @@ IF NOT EXIST nuget.config (
     call "%~dp0colors.bat" 3 0 "[I] nuget.config file created"
 ) ELSE (
     call "%~dp0colors.bat" 4 0 "[W] The nuget.config file already exists"
+)
+
+: append .editorconfig
+IF NOT EXIST .editorconfig (
+    type "%~dp0..\templates\cs\editor" >> .editorconfig
+    call "%~dp0colors.bat" 3 0 "[I] .editorconfig file created"
+) ELSE (
+    call "%~dp0colors.bat" 4 0 "[W] The .editorconfig file already exists"
 )
 
 : append Directory.Build.props
