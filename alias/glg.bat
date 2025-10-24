@@ -12,14 +12,14 @@ where pwsh >nul 2>&1
 if %errorlevel% neq 0 (
     echo PowerShell not installed, using cmd to run...
     if "%~1"=="" (
-        git worktree ls
+        git log --oneline --all --graph -10
     ) else (
-        git worktree %*
+        git log --oneline --all --graph %*
     )
 ) else (
     if "!args!"=="" (
-        pwsh -c "git worktree list"
+        pwsh -c "git log --oneline --all --graph -10"
     ) else (
-        pwsh -c "git worktree !args!"
+        pwsh -c "git log --oneline --all --graph !args!"
     )
 )

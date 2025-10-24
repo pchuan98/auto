@@ -17,18 +17,13 @@ set https_proxy=http://127.0.0.1:1080
 set CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 set CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL=1
 
-@REM set BASH_MAX_OUTPUT_LENGTH=500
+set ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
+set ANTHROPIC_AUTH_TOKEN=sk-41dfe23c5c2847e3b627ce4a9e04cae0
+set API_TIMEOUT_MS=600000
+set ANTHROPIC_MODEL=deepseek-chat
+set ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
+set CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 
-set ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic
-set ANTHROPIC_AUTH_TOKEN=0a470f3fe50f470f8568dc8966f1c73b.lZPuea0HrKXspSen
-@REM set API_TIMEOUT_MS=10000
-@REM set MAX_THINKING_TOKENS=10000
-
-@REM set ANTHROPIC_MODEL=glm-4.6
-
-set ANTHROPIC_DEFAULT_OPUS_MODEL=GLM-4.6
-set ANTHROPIC_DEFAULT_SONNET_MODEL=GLM-4.6
-set ANTHROPIC_DEFAULT_HAIKU_MODEL=GLM-4.6
 @REM Set MCP config as JSON string
 set "MCP_CONFIG_JSON={\"mcpServers\": {\"web-search-prime\": {\"type\": \"http\", \"url\": \"https://open.bigmodel.cn/api/mcp/web_search_prime/mcp\", \"headers\": {\"Authorization\": \"0a470f3fe50f470f8568dc8966f1c73b.lZPuea0HrKXspSen\"}}, \"zai-mcp-server\": {\"type\": \"stdio\", \"command\": \"npx\", \"args\": [\"-y\", \"@z_ai/mcp-server\"]}}}"
 

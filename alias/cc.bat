@@ -23,19 +23,16 @@ if %errorlevel% neq 0 (
     echo Claude CLI installation completed
 )
 
-set DISABLE_AUTOUPDATER=1
-set DISABLE_TELEMETRY=1
-set BASH_MAX_OUTPUT_LENGTH=500
+set CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+set CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL=1
+set MAX_THINKING_TOKENS=10000
 
-set ANTHROPIC_BASE_URL=
-set ANTHROPIC_AUTH_TOKEN=
-set ANTHROPIC_MODEL=
-set ANTHROPIC_SMALL_FAST_MODEL=
+set "ALLOWED_TOOLS=Bash,Read,Glob,Grep,WebFetch,WebSearch"
 
 where pwsh >nul 2>&1
 if %errorlevel% neq 0 (
     echo PowerShell not installed, using cmd to run...
-    claude %*
+    claude --allowedTools "%ALLOWED_TOOLS%" %*
 ) else (
-   pwsh -c "claude !args!"
+   pwsh -c "claude --allowedTools '!ALLOWED_TOOLS!' !args!"
 )

@@ -1,0 +1,20 @@
+这个文件放到user下.claude / setting.json
+
+{
+    "statusLine": {
+        "type": "command",
+        "command": "C:/Users/haeer/.claude/StatusLine.exe",
+        "padding": 0
+    },
+    "alwaysThinkingEnabled": true,
+    "permissions": {
+        "allow": [
+            "mcp__context7__resolve-library-id",
+            "mcp__context7__get-library-docs",
+            "mcp__web-search-prime__webSearchPrime",
+            "mcp__zai-mcp-server__analyze_image",
+            "mcp__zai-mcp-server__analyze_video"
+        ]
+    },
+    "outputStyle": "Explanatory"
+}
